@@ -1,0 +1,210 @@
+<form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+
+
+<section class="my-5">
+  	<div class="py-5">
+  		<h2 class="text-centre">Contact Us</h2>
+  	</div>
+
+  	<div class="w-50 ml-auto">
+  		<form action="userinfo.php" method="post">
+  			<div class="form-group">
+  				<label>Username:</label>
+  				<input type="text" name="user" autocomplete="off" class="form-control">
+  			</div>
+  			<div class="form-group">
+  				<label>Email address:</label>
+  				<input type="text" name="email" autocomplete="off" class="form-control">
+  			</div>
+  			<div class="form-group">
+  				<label>Mobile:</label>
+  				<input type="text" name="mobile" autocomplete="off" class="form-control">
+  			</div>
+  			<div class="form-group">
+  				<label>Comment:</label>
+  				<textarea class="form-control" name="comment"></textarea>
+  			</div>
+  			<button type="submit" class="btn btn-primary">Submit</button>
+  		</form>
+  	</div>
+
+</section>
+
+
+<!DOCTYPE html>
+<htlm>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">
+  
+</head>
+</body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand" href="index.php">Dream Tourism</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="services.php">Services</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="about.php">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="ContactUs.php">Contact</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="001.jpg" alt="Los Angeles" style="width:100%; height:550px!important;">
+        <div class="carousel-caption">
+          <h3>Los Angeles</h3>
+          <p>LA is always so much fun!</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="002.jpg" alt="Chicago" style="width:100%; height:550px!important;">
+        <div class="carousel-caption">
+          <h3>Chicago</h3>
+          <p>Thank you, Chicago!</p>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="003.jpg" alt="New York" style="width:100%; height:550px!important;">
+        <div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+
+<div class="col-lg-4 col-md-4 col-12">
+  				<div class="card">
+            <img class="card-img-top" src="010.jpg" alt="Card image">
+            <div class="card-body">
+            <h4 class="card-title">Domestic Tours</h4>
+            <p class="card-text">Delhi, Mumbai, Agra, Jaipur and etc.</p>
+            <a href="#" class="btn btn-primary">Our Services</a>
+             </div>
+          </div>
+  	   </div>
+  	   <div class="col-lg-4 col-md-4 col-12">
+  				<div class="card">
+            <img class="card-img-top" src="017.jpg" alt="Card image">
+            <div class="card-body">
+            <h4 class="card-title">International Cruise Package</h4>
+            <p class="card-text">Best International Cruise deals available on Dream Tourism.</p>
+            <a href="#" class="btn btn-primary">Our Services</a>
+             </div>
+          </div>
+  	   </div>
+
+
+
+<p class="card-text">Delhi, Mumbai, Agra, and Jaipur etc.</p>
+
+
+$con = mysqli_connect('localhost','root');
+
+if($con){
+	echo "Connection successful";
+}else{
+	echo "No connection";
+}
+
+mysqli_select_db($con, 'projectwebsite');
+
+$user = $_POST['user'];
+$email = $_POST['email'];
+$mobile = $_POST['mobile'];
+$comment = $_POST['comment'];
+
+$query = " insert into userinfodata (user, email, mobile, comment)
+value ('$user', '$email', '$mobile', '$comment')";
+
+mysqli_query($con, $query);
+
+header('location:index.php');
+
+?>
+
+
+<?php
+
+$con = mysqli_connect('localhost','root');
+
+if($con){
+  echo "Connention successful";
+}else{
+  echo "No connection";
+}
+
+mysqli_select_db($con, 'dreamtourismdata');
+
+$user = $_POST['user'];
+$email = $_POST['email'];
+$mobile = $_POST['mobile'];
+$packagetype = $_POST['packagetype'];
+$comment = $_POST['comment'];
+
+$query = " insert into userinfodata (user, email, mobile, packagetype, comment)
+values ('$user', '$email','$mobile','$packagetype','$comment')";
+
+mysqli_query($con,$query);
+
+header('location:index.php');
+
+
+?>
+
+<option>Air International Package</option>
+    <option>Domestic Tours Package</option>
+    <option>International Cruise Package</option>
+    </select>
